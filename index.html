@@ -4,16 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pemilihan Kakak Ter · OSIS SMA Negeri 1 Rogojampi</title>
-
-    <!-- ===== STYLE ===== -->
     <style>
-        /* ---------- RESET ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background: #fafafa;
             color: #1a1a1a;
@@ -21,24 +13,20 @@
             line-height: 1.5;
             padding: 2rem 1rem;
         }
-
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: #ffffff;
             padding: 2rem 1.5rem 3rem;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             border: 1px solid #eaeaea;
         }
-
-        /* ---------- HEADER ---------- */
         .header {
             text-align: center;
             padding-bottom: 1.8rem;
             border-bottom: 2px solid #1a1a1a;
             margin-bottom: 2rem;
         }
-
         .header .school {
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -46,11 +34,7 @@
             color: #555;
             margin-bottom: 0.2rem;
         }
-
-        .header .school strong {
-            color: #1a1a1a;
-        }
-
+        .header .school strong { color: #1a1a1a; }
         .header h1 {
             font-size: 2.2rem;
             font-weight: 700;
@@ -59,7 +43,6 @@
             text-transform: uppercase;
             color: #1a1a1a;
         }
-
         .header .sub {
             font-size: 0.9rem;
             color: #555;
@@ -69,7 +52,6 @@
             margin-top: 0.2rem;
             letter-spacing: 0.5px;
         }
-
         .header .sub span {
             background: #1a1a1a;
             color: #fff;
@@ -78,8 +60,6 @@
             letter-spacing: 1px;
             margin: 0 0.2rem;
         }
-
-        /* ---------- INTRO ---------- */
         .intro {
             background: #f5f5f5;
             padding: 1.2rem 1.5rem;
@@ -88,24 +68,17 @@
             font-size: 0.95rem;
             color: #2a2a2a;
         }
-
-        .intro p {
-            margin-bottom: 0.3rem;
-        }
-
+        .intro p { margin-bottom: 0.3rem; }
         .intro .small {
             font-size: 0.8rem;
             color: #666;
             margin-top: 0.3rem;
         }
-
-        /* ---------- FORM ---------- */
         .vote-grid {
             display: flex;
             flex-direction: column;
             gap: 0.9rem;
         }
-
         .vote-item {
             display: flex;
             flex-wrap: wrap;
@@ -115,11 +88,7 @@
             border-bottom: 1px solid #eee;
             transition: background 0.1s ease;
         }
-
-        .vote-item:hover {
-            background: #f6f6f6;
-        }
-
+        .vote-item:hover { background: #f6f6f6; }
         .vote-item .label {
             width: 180px;
             font-weight: 600;
@@ -128,7 +97,6 @@
             letter-spacing: 0.3px;
             flex-shrink: 0;
         }
-
         .vote-item .label .num {
             display: inline-block;
             width: 24px;
@@ -136,7 +104,6 @@
             font-weight: 400;
             font-size: 0.75rem;
         }
-
         .vote-item select {
             flex: 1;
             min-width: 200px;
@@ -152,24 +119,16 @@
             appearance: auto;
             cursor: pointer;
         }
-
         .vote-item select:focus {
             border-color: #1a1a1a;
-            box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.08);
+            box-shadow: 0 0 0 2px rgba(26,26,26,0.08);
         }
-
-        .vote-item select option {
-            padding: 0.2rem 0.4rem;
-        }
-
-        /* ---------- SUBMIT ---------- */
         .submit-wrap {
             margin-top: 2.5rem;
             text-align: center;
             border-top: 2px solid #1a1a1a;
             padding-top: 2rem;
         }
-
         .submit-wrap button {
             background: #1a1a1a;
             color: #fff;
@@ -184,23 +143,14 @@
             transition: background 0.15s, transform 0.05s;
             font-family: inherit;
         }
-
-        .submit-wrap button:hover {
-            background: #333;
-        }
-
-        .submit-wrap button:active {
-            transform: scale(0.97);
-        }
-
+        .submit-wrap button:hover { background: #333; }
+        .submit-wrap button:active { transform: scale(0.97); }
         .submit-wrap .note {
             font-size: 0.75rem;
             color: #888;
             margin-top: 0.8rem;
             letter-spacing: 0.3px;
         }
-
-        /* ---------- FOOTER ---------- */
         .footer {
             margin-top: 3rem;
             padding-top: 1.5rem;
@@ -210,12 +160,7 @@
             text-align: center;
             letter-spacing: 0.3px;
         }
-
-        .footer strong {
-            color: #444;
-            font-weight: 600;
-        }
-
+        .footer strong { color: #444; font-weight: 600; }
         .footer .line {
             display: inline-block;
             width: 30px;
@@ -224,303 +169,143 @@
             margin: 0 0.5rem;
             vertical-align: middle;
         }
-
-        /* ---------- RESPONSIVE ---------- */
         @media (max-width: 700px) {
-            .container {
-                padding: 1.2rem 0.8rem 2rem;
-            }
-
-            .header h1 {
-                font-size: 1.6rem;
-            }
-
+            .container { padding: 1.2rem 0.8rem 2rem; }
+            .header h1 { font-size: 1.6rem; }
             .vote-item {
                 flex-direction: column;
                 align-items: stretch;
                 padding: 0.8rem 0.5rem;
             }
-
             .vote-item .label {
                 width: 100%;
                 margin-bottom: 0.25rem;
                 font-size: 0.9rem;
             }
-
-            .vote-item select {
-                min-width: unset;
-                width: 100%;
-            }
-
-            .intro {
-                padding: 1rem;
-                font-size: 0.85rem;
-            }
-
+            .vote-item select { min-width: unset; width: 100%; }
+            .intro { padding: 1rem; font-size: 0.85rem; }
             .submit-wrap button {
                 width: 100%;
                 padding: 0.8rem 1rem;
                 font-size: 1rem;
             }
         }
-
         @media (max-width: 400px) {
-            body {
-                padding: 0.5rem;
-            }
-            .container {
-                padding: 0.8rem 0.5rem 1.5rem;
-            }
-            .header h1 {
-                font-size: 1.3rem;
-            }
-            .vote-item .label {
-                font-size: 0.8rem;
-            }
-            .vote-item select {
-                font-size: 0.8rem;
-                padding: 0.35rem 0.5rem;
-            }
+            body { padding: 0.5rem; }
+            .container { padding: 0.8rem 0.5rem 1.5rem; }
+            .header h1 { font-size: 1.3rem; }
+            .vote-item .label { font-size: 0.8rem; }
+            .vote-item select { font-size: 0.8rem; padding: 0.35rem 0.5rem; }
         }
-
-        /* ---------- STATUS ---------- */
         .status-msg {
             margin-top: 1.2rem;
             font-size: 0.9rem;
             color: #1a1a1a;
             min-height: 2rem;
         }
-        .status-msg.success {
-            color: #1e7e34;
-        }
-        .status-msg.error {
-            color: #b33;
-        }
-
-        .signature {
-            font-family: "Georgia", serif;
-            font-style: italic;
-            color: #555;
-            font-size: 0.85rem;
-            margin-top: 0.2rem;
-        }
+        .status-msg.success { color: #1e7e34; }
+        .status-msg.error { color: #b33; }
     </style>
 </head>
-
 <body>
-
     <div class="container">
-
-        <!-- ===== HEADER ===== -->
         <header class="header">
-            <div class="school">
-                <strong>SMA NEGERI 1 ROGOJAMPI</strong> · OSIS PERIODE 2025/2026
-            </div>
+            <div class="school"><strong>SMA NEGERI 1 ROGOJAMPI</strong> · OSIS PERIODE 2025/2026</div>
             <h1>Pemilihan Kakak Ter</h1>
-            <div class="sub">
-                <span>#VoteKakakTer</span> &nbsp;·&nbsp; 50 kategori
-            </div>
+            <div class="sub"><span>#VoteKakakTer</span> &nbsp;·&nbsp; 50 kategori</div>
         </header>
-
-        <!-- ===== INTRO ===== -->
         <div class="intro">
-            <p>
-                Pilih <strong>satu</strong> kakak OSIS untuk setiap kategori di bawah ini.
-                Suaramu menentukan siapa yang layak menyandang gelar <em>"Ter"</em> di angkatan ini!
-            </p>
-            <p class="small">
-                ⚡ Isi semua kategori sebelum mengirim. Data akan langsung tersimpan di Google Sheets.
-            </p>
+            <p>Pilih <strong>satu</strong> kakak OSIS untuk setiap kategori di bawah ini. Suaramu menentukan siapa yang layak menyandang gelar <em>"Ter"</em> di angkatan ini!</p>
+            <p class="small">⚡ Isi semua kategori sebelum mengirim. Data akan langsung tersimpan di Google Sheets.</p>
         </div>
-
-        <!-- ===== VOTING FORM ===== -->
         <form id="voteForm" novalidate>
-            <div id="voteGrid" class="vote-grid">
-                <!-- diisi oleh JavaScript -->
-            </div>
-
+            <div id="voteGrid" class="vote-grid"></div>
             <div class="submit-wrap">
                 <button type="submit" id="submitBtn">Kirim Suara</button>
                 <div id="statusMsg" class="status-msg"></div>
                 <div class="note">— suaramu berharga —</div>
             </div>
         </form>
-
-        <!-- ===== FOOTER ===== -->
         <footer class="footer">
             <strong>OSIS SMA Negeri 1 Rogojampi</strong>
             <span class="line"></span>
             Jl. Ali Sakti No. 2, Pengatigan, Rogojampi, Banyuwangi
             <br />
-            <span style="font-size:0.7rem; color:#aaa;">
-                © 2026 · Pemilihan Kakak Ter
-            </span>
+            <span style="font-size:0.7rem; color:#aaa;">© 2026 · Pemilihan Kakak Ter</span>
         </footer>
-
     </div>
 
-    <!-- ========================================================== -->
-    <!-- ===== JAVASCRIPT ===== -->
     <script>
         // ============================================================
-        //  1. DATA
+        // DATA KAKAK DAN KATEGORI
         // ============================================================
-
         const KAKAK = [
-            "Nadin Izzah Millati Putri",
-            "Rezhta Andriagsa",
-            "Nur Alyuni Citra",
-            "Hudansyah Ahmad",
-            "Naurah Nafiisah Maahirah Hakiki",
-            "Faris Ega Dynata",
-            "Gesya Amelia A",
-            "Galuh Widya Agusta",
-            "Muhammad Raditya Pradipta",
-            "Indy Nayla Izza",
-            "Nindiya Cahaya M",
-            "Muhibbussholiihiin",
-            "Naila Zshadda",
-            "Khayla Shaheera F",
-            "Chika Aurellia Putri",
-            "Jessica Agnie K",
-            "Naura Alifa W",
-            "Naurah Widad",
-            "Moch. Pupung Vanda Rizky",
-            "Justine Abimael Mahesa Agni",
-            "Ocktavia Wuland",
-            "Silva Adinda D.P",
-            "Keyla Athaya",
-            "Callysta Odelia R",
-            "Arya Raka Firdaus",
-            "Kayko Almira T.D",
-            "Risalatin Khoiriyah",
-            "Rafido Favian Zain W",
-            "Afair Harlia Rizqi",
-            "Citra Pertama N",
-            "Ahmad Bintang Kurniawan",
-            "Dede Bima Juniarta",
-            "Haikal Fulvian Baldi",
-            "Taniya Mirabel",
-            "Pertiwi Indah Lestari",
-            "Friska Nadin A",
-            "Eka Maulidiya P",
-            "Erlangga Putra M",
-            "Shafira Indah Safitri",
-            "Kenzie Bima Ozora",
-            "Chatrina Gloria A",
-            "Masayu Magnolia A",
-            "Mayang Kharisma",
-            "Clesya Reva L",
-            "Dara Jelita A",
-            "Sean Al-Mi'raj",
-            "Muhammad Rafi Tiofani",
-            "Demian Qomarul Zaman",
-            "Firza Erkurnia",
-            "Marvin Khadafi"
+            "Nadin Izzah Millati Putri","Rezhta Andriagsa","Nur Alyuni Citra","Hudansyah Ahmad",
+            "Naurah Nafiisah Maahirah Hakiki","Faris Ega Dynata","Gesya Amelia A","Galuh Widya Agusta",
+            "Muhammad Raditya Pradipta","Indy Nayla Izza","Nindiya Cahaya M","Muhibbussholiihiin",
+            "Naila Zshadda","Khayla Shaheera F","Chika Aurellia Putri","Jessica Agnie K",
+            "Naura Alifa W","Naurah Widad","Moch. Pupung Vanda Rizky","Justine Abimael Mahesa Agni",
+            "Ocktavia Wuland","Silva Adinda D.P","Keyla Athaya","Callysta Odelia R",
+            "Arya Raka Firdaus","Kayko Almira T.D","Risalatin Khoiriyah","Rafido Favian Zain W",
+            "Afair Harlia Rizqi","Citra Pertama N","Ahmad Bintang Kurniawan","Dede Bima Juniarta",
+            "Haikal Fulvian Baldi","Taniya Mirabel","Pertiwi Indah Lestari","Friska Nadin A",
+            "Eka Maulidiya P","Erlangga Putra M","Shafira Indah Safitri","Kenzie Bima Ozora",
+            "Chatrina Gloria A","Masayu Magnolia A","Mayang Kharisma","Clesya Reva L",
+            "Dara Jelita A","Sean Al-Mi'raj","Muhammad Rafi Tiofani","Demian Qomarul Zaman",
+            "Firza Erkurnia","Marvin Khadafi"
         ];
 
         const KATEGORI = [
-            "Ter Favorit",
-            "Ter Cantik",
-            "Ter Ganteng",
-            "Ter Kreatif",
-            "Ter Sibuk",
-            "Ter Ngaret",
-            "Ter Aktif",
-            "Ter Jahil",
-            "Ter Ekstrovert",
-            "Ter Introvert",
-            "Ter Lucu",
-            "Ter Imut",
-            "Ter Famous",
-            "Ter Multitalent",
-            "Ter Santuy",
-            "Ter Sabar",
-            "Ter Manis",
-            "Ter Bucin",
-            "Ter Panikan",
-            "Ter Berisik",
-            "Ter On Time",
-            "Ter Cengeng",
-            "Ter Keren",
-            "Ter Ngantukan",
-            "Ter Produktif",
-            "Ter Ceroboh",
-            "Ter Lebay",
-            "Ter Asik",
-            "Ter Sensi",
-            "Ter Mageran",
-            "Ter Berbakat",
-            "Ter Positive Vibes",
-            "Ter Rajin",
-            "Ter Wibu",
-            "Ter Ramah",
-            "Ter Riweuh",
-            "Ter Cerewet",
-            "Ter Energik",
-            "Ter Kalem",
-            "Ter Royal",
-            "Ter Fashionable",
-            "Ter Wibawa",
-            "Ter Sinis",
-            "Ter Sadis",
-            "Ter Julid",
-            "Ter Jutek",
-            "Ter Jahat",
-            "Ter Sombong",
-            "Ter Flat",
-            "Ter Cuek"
+            "Ter Favorit","Ter Cantik","Ter Ganteng","Ter Kreatif","Ter Sibuk","Ter Ngaret",
+            "Ter Aktif","Ter Jahil","Ter Ekstrovert","Ter Introvert","Ter Lucu","Ter Imut",
+            "Ter Famous","Ter Multitalent","Ter Santuy","Ter Sabar","Ter Manis","Ter Bucin",
+            "Ter Panikan","Ter Berisik","Ter On Time","Ter Cengeng","Ter Keren","Ter Ngantukan",
+            "Ter Produktif","Ter Ceroboh","Ter Lebay","Ter Asik","Ter Sensi","Ter Mageran",
+            "Ter Berbakat","Ter Positive Vibes","Ter Rajin","Ter Wibu","Ter Ramah","Ter Riweuh",
+            "Ter Cerewet","Ter Energik","Ter Kalem","Ter Royal","Ter Fashionable","Ter Wibawa",
+            "Ter Sinis","Ter Sadis","Ter Julid","Ter Jutek","Ter Jahat","Ter Sombong",
+            "Ter Flat","Ter Cuek"
         ];
 
         // ============================================================
-        //  2. KONFIGURASI GOOGLE SHEETS (via Apps Script)
+        // URL APPS SCRIPT (pakai URL terbaru dari deployment)
         // ============================================================
-
-        // ====== URL APPS SCRIPT ANDA ======
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzvbuvoRrou0WKXJy-KdWacQsrAhknMIsQku82kpA_xVtU7rnYEE6SHSB3Zyd1T3GZ4Kw/exec";
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyPLmFJSj1SM0ChMVH_XPROC3g9uculUZ4KJsgHo8-Ojsklq-bXK8nxxzkQaOZAFqdGYg/exec";
 
         // ============================================================
-        //  3. RENDER FORM
+        // RENDER FORM
         // ============================================================
-
         const grid = document.getElementById('voteGrid');
-
         KATEGORI.forEach((kat, idx) => {
             const div = document.createElement('div');
             div.className = 'vote-item';
-
             const label = document.createElement('span');
             label.className = 'label';
-            label.innerHTML = `<span class="num">${String(idx + 1).padStart(2, '0')}.</span> ${kat}`;
-
+            label.innerHTML = `<span class="num">${String(idx+1).padStart(2,'0')}.</span> ${kat}`;
             const select = document.createElement('select');
             select.id = `vote_${idx}`;
             select.name = `kategori_${idx}`;
             select.required = true;
-
             const defOpt = document.createElement('option');
             defOpt.value = '';
             defOpt.textContent = '— pilih kakak —';
             defOpt.disabled = true;
             defOpt.selected = true;
             select.appendChild(defOpt);
-
             KAKAK.forEach(nama => {
                 const opt = document.createElement('option');
                 opt.value = nama;
                 opt.textContent = nama;
                 select.appendChild(opt);
             });
-
             div.appendChild(label);
             div.appendChild(select);
             grid.appendChild(div);
         });
 
         // ============================================================
-        //  4. SUBMIT KE GOOGLE SHEETS (via Apps Script)
+        // SUBMIT HANDLER (mengirim dengan FormData, tanpa preflight)
         // ============================================================
-
         const formEl = document.getElementById('voteForm');
         const statusMsg = document.getElementById('statusMsg');
         const submitBtn = document.getElementById('submitBtn');
@@ -532,7 +317,6 @@
             const selects = formEl.querySelectorAll('select');
             const data = {};
             let allFilled = true;
-
             selects.forEach((sel, index) => {
                 const val = sel.value.trim();
                 data[KATEGORI[index]] = val;
@@ -549,16 +333,21 @@
             data['timestamp'] = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
 
             statusMsg.className = 'status-msg';
-            statusMsg.textContent = '⏳ Menyimpan suara ke Google Sheets...';
+            statusMsg.textContent = '⏳ Menyimpan suara...';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
             try {
+                // Buat FormData (agar tidak memicu preflight)
+                const formData = new FormData();
+                for (const [key, value] of Object.entries(data)) {
+                    formData.append(key, value);
+                }
+
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'cors',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data),
+                    // Jangan set Content-Type, biarkan browser atur sendiri (multipart/form-data)
+                    body: formData
                 });
 
                 if (!response.ok) {
@@ -600,10 +389,9 @@
         });
 
         console.log('📋 Pemilihan Kakak Ter — OSIS SMA Negeri 1 Rogojampi');
-        console.log('👥 ' + KAKAK.length + ' kakak, ' + KATEGORI.length + ' kategori');
+        console.log(`👥 ${KAKAK.length} kakak, ${KATEGORI.length} kategori`);
         console.log('📊 Data akan disimpan ke Google Sheets via Apps Script.');
-        console.log('🔗 URL Apps Script: ' + APPS_SCRIPT_URL);
+        console.log('🔗 URL Apps Script:', APPS_SCRIPT_URL);
     </script>
-
 </body>
 </html>
