@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemilihan Kakak Ter · OSIS SMA Negeri 1 Rogojampi</title>
+
+    <!-- ===== STYLE ===== -->
+    <style>
+        /* ---------- RESET ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafafa;
+            color: #1a1a1a;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            padding: 2rem 1.5rem 3rem;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            border: 1px solid #eaeaea;
+        }
+
+        /* ---------- HEADER ---------- */
+        .header {
+            text-align: center;
+            padding-bottom: 1.8rem;
+            border-bottom: 2px solid #1a1a1a;
+            margin-bottom: 2rem;
+        }
+
+        .header .school {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+            margin-bottom: 0.2rem;
+        }
+
+        .header .school strong {
+            color: #1a1a1a;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin: 0.4rem 0 0.2rem;
+            text-transform: uppercase;
+            color: #1a1a1a;
+        }
+
+        .header .sub {
+            font-size: 0.9rem;
+            color: #555;
+            border-top: 1px solid #ddd;
+            display: inline-block;
+            padding-top: 0.3rem;
+            margin-top: 0.2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header .sub span {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 0.05rem 0.6rem;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin: 0 0.2rem;
+        }
+
+        /* ---------- INTRO ---------- */
+        .intro {
+            background: #f5f5f5;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 2.2rem;
+            border-left: 4px solid #1a1a1a;
+            font-size: 0.95rem;
+            color: #2a2a2a;
+        }
+
+        .intro p {
+            margin-bottom: 0.3rem;
+        }
+
+        .intro .small {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+
+        /* ---------- FORM ---------- */
+        .vote-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        .vote-item {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 0.6rem 0.8rem;
+            background: #fcfcfc;
+            border-bottom: 1px solid #eee;
+            transition: background 0.1s ease;
+        }
+
+        .vote-item:hover {
+            background: #f6f6f6;
+        }
+
+        .vote-item .label {
+            width: 180px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: #1a1a1a;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+        }
+
+        .vote-item .label .num {
+            display: inline-block;
+            width: 24px;
+            color: #888;
+            font-weight: 400;
+            font-size: 0.75rem;
+        }
+
+        .vote-item select {
+            flex: 1;
+            min-width: 200px;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.9rem;
+            font-family: inherit;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            color: #1a1a1a;
+            outline: none;
+            transition: border 0.15s;
+            appearance: auto;
+            cursor: pointer;
+        }
+
+        .vote-item select:focus {
+            border-color: #1a1a1a;
+            box-shadow: 0 0 0 2px rgba(26, 26, 26, 0.08);
+        }
+
+        .vote-item select option {
+            padding: 0.2rem 0.4rem;
+        }
+
+        /* ---------- SUBMIT ---------- */
+        .submit-wrap {
+            margin-top: 2.5rem;
+            text-align: center;
+            border-top: 2px solid #1a1a1a;
+            padding-top: 2rem;
+        }
+
+        .submit-wrap button {
+            background: #1a1a1a;
+            color: #fff;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.8rem 3.5rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.15s, transform 0.05s;
+            font-family: inherit;
+        }
+
+        .submit-wrap button:hover {
+            background: #333;
+        }
+
+        .submit-wrap button:active {
+            transform: scale(0.97);
+        }
+
+        .submit-wrap .note {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        /* ---------- FOOTER ---------- */
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+            font-size: 0.75rem;
+            color: #888;
+            text-align: center;
+            letter-spacing: 0.3px;
+        }
+
+        .footer strong {
+            color: #444;
+            font-weight: 600;
+        }
+
+        .footer .line {
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background: #ccc;
+            margin: 0 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 700px) {
+            .container {
+                padding: 1.2rem 0.8rem 2rem;
+            }
+
+            .header h1 {
+                font-size: 1.6rem;
+            }
+
+            .vote-item {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 0.8rem 0.5rem;
+            }
+
+            .vote-item .label {
+                width: 100%;
+                margin-bottom: 0.25rem;
+                font-size: 0.9rem;
+            }
+
+            .vote-item select {
+                min-width: unset;
+                width: 100%;
+            }
+
+            .intro {
+                padding: 1rem;
+                font-size: 0.85rem;
+            }
+
+            .submit-wrap button {
+                width: 100%;
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            body {
+                padding: 0.5rem;
+            }
+            .container {
+                padding: 0.8rem 0.5rem 1.5rem;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            .vote-item .label {
+                font-size: 0.8rem;
+            }
+            .vote-item select {
+                font-size: 0.8rem;
+                padding: 0.35rem 0.5rem;
+            }
+        }
+
+        /* ---------- LOADING / STATUS ---------- */
+        .status-msg {
+            margin-top: 1.2rem;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+            min-height: 2rem;
+        }
+        .status-msg.success {
+            color: #1e7e34;
+        }
+        .status-msg.error {
+            color: #b33;
+        }
+
+        /* ---------- HUMAN TOUCH ---------- */
+        .signature {
+            font-family: "Georgia", serif;
+            font-style: italic;
+            color: #555;
+            font-size: 0.85rem;
+            margin-top: 0.2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- ===== HEADER ===== -->
+        <header class="header">
+            <div class="school">
+                <strong>SMA NEGERI 1 ROGOJAMPI</strong> · OSIS PERIODE 2025/2026
+            </div>
+            <h1>Pemilihan Kakak Ter</h1>
+            <div class="sub">
+                <span>#VoteKakakTer</span> &nbsp;·&nbsp; 50 kategori
+            </div>
+        </header>
+
+        <!-- ===== INTRO ===== -->
+        <div class="intro">
+            <p>
+                Pilih <strong>satu</strong> kakak OSIS untuk setiap kategori di bawah ini.
+                Suaramu menentukan siapa yang layak menyandang gelar <em>“Ter”</em> di angkatan ini!
+            </p>
+            <p class="small">
+                ⚡ Isi semua kategori sebelum mengirim. Data akan dikirim ke Google Form secara otomatis.
+            </p>
+        </div>
+
+        <!-- ===== VOTING FORM ===== -->
+        <form id="voteForm" novalidate>
+            <div id="voteGrid" class="vote-grid">
+                <!-- diisi oleh JavaScript -->
+            </div>
+
+            <div class="submit-wrap">
+                <button type="submit" id="submitBtn">Kirim Suara</button>
+                <div id="statusMsg" class="status-msg"></div>
+                <div class="note">— suaramu berharga —</div>
+            </div>
+        </form>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="footer">
+            <strong>OSIS SMA Negeri 1 Rogojampi</strong>
+            <span class="line"></span>
+            Jl. Ali Sakti No. 2, Pengatigan, Rogojampi, Banyuwangi
+            <br />
+            <span style="font-size:0.7rem; color:#aaa;">
+                © 2026 · Pemilihan Kakak Ter
+            </span>
+        </footer>
+
+    </div>
+
+    <!-- ========================================================== -->
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        // ============================================================
+        //  1. DATA
+        // ============================================================
+
+        // Daftar 50 kakak OSIS (dari file DISPEN)
+        const KAKAK = [
+            "Nadin Izzah Millati Putri",
+            "Rezhta Andriagsa",
+            "Nur Alyuni Citra",
+            "Hudansyah Ahmad",
+            "Naurah Nafiisah Maahirah Hakiki",
+            "Faris Ega Dynata",
+            "Gesya Amelia A",
+            "Galuh Widya Agusta",
+            "Muhammad Raditya Pradipta",
+            "Indy Nayla Izza",
+            "Nindiya Cahaya M",
+            "Muhibbussholiihiin",
+            "Naila Zshadda",
+            "Khayla Shaheera F",
+            "Chika Aurellia Putri",
+            "Jessica Agnie K",
+            "Naura Alifa W",
+            "Naurah Widad",
+            "Moch. Pupung Vanda Rizky",
+            "Justine Abimael Mahesa Agni",
+            "Ocktavia Wuland",
+            "Silva Adinda D.P",
+            "Keyla Athaya",
+            "Callysta Odelia R",
+            "Arya Raka Firdaus",
+            "Kayko Almira T.D",
+            "Risalatin Khoiriyah",
+            "Rafido Favian Zain W",
+            "Afair Harlia Rizqi",
+            "Citra Pertama N",
+            "Ahmad Bintang Kurniawan",
+            "Dede Bima Juniarta",
+            "Haikal Fulvian Baldi",
+            "Taniya Mirabel",
+            "Pertiwi Indah Lestari",
+            "Friska Nadin A",
+            "Eka Maulidiya P",
+            "Erlangga Putra M",
+            "Shafira Indah Safitri",
+            "Kenzie Bima Ozora",
+            "Chatrina Gloria A",
+            "Masayu Magnolia A",
+            "Mayang Kharisma",
+            "Clesya Reva L",
+            "Dara Jelita A",
+            "Sean Al-Mi'raj",
+            "Muhammad Rafi Tiofani",
+            "Demian Qomarul Zaman",
+            "Firza Erkurnia",
+            "Marvin Khadafi"
+        ];
+
+        // 50 kategori (urutan sesuai permintaan)
+        const KATEGORI = [
+            "Ter Favorit",
+            "Ter Cantik",
+            "Ter Ganteng",
+            "Ter Kreatif",
+            "Ter Sibuk",
+            "Ter Ngaret",
+            "Ter Aktif",
+            "Ter Jahil",
+            "Ter Ekstrovert",
+            "Ter Introvert",
+            "Ter Lucu",
+            "Ter Imut",
+            "Ter Famous",
+            "Ter Multitalent",
+            "Ter Santuy",
+            "Ter Sabar",
+            "Ter Manis",
+            "Ter Bucin",
+            "Ter Panikan",
+            "Ter Berisik",
+            "Ter On Time",
+            "Ter Cengeng",
+            "Ter Keren",
+            "Ter Ngantukan",
+            "Ter Produktif",
+            "Ter Ceroboh",
+            "Ter Lebay",
+            "Ter Asik",
+            "Ter Sensi",
+            "Ter Mageran",
+            "Ter Berbakat",
+            "Ter Positive Vibes",
+            "Ter Rajin",
+            "Ter Wibu",
+            "Ter Ramah",
+            "Ter Riweuh",
+            "Ter Cerewet",
+            "Ter Energik",
+            "Ter Kalem",
+            "Ter Royal",
+            "Ter Fashionable",
+            "Ter Wibawa",
+            "Ter Sinis",
+            "Ter Sadis",
+            "Ter Julid",
+            "Ter Jutek",
+            "Ter Jahat",
+            "Ter Sombong",
+            "Ter Flat",
+            "Ter Cuek"
+        ];
+
+        // ============================================================
+        //  2. KONFIGURASI GOOGLE FORM
+        // ============================================================
+
+        // ====== SESUAIKAN DENGAN FORM YANG KAMU BUAT ======
+        // 1. Buat Google Form dengan 50 pertanyaan (dropdown).
+        // 2. Setiap pertanyaan = satu kategori (nama kategori sebagai judul).
+        // 3. Pilihan jawaban = daftar KAKAK (copy dari atas).
+        // 4. Ganti FORM_ID di bawah dengan ID form-mu.
+        // 5. Ganti entry ID di bawah dengan ID masing-masing pertanyaan.
+        //    Cara dapat entry ID: buka form di browser, inspect element,
+        //    cari input dengan name="entry.xxxxxx", salin angkanya.
+        // ===================================================
+
+        const FORM_ID = "1FAIpQLSdUaMhWgHIS2FlsVfZ8kFZ8UxN1FvJkLQ3mR6oP4nB7cD9eF0gH1iJ2kL3mN4oP5qR6sT7uV8wX9yZ0"; // ganti dengan ID form-mu
+
+        // Entry ID untuk setiap kategori (urut sesuai KATEGORI)
+        // Isi dengan ID yang kamu dapat dari inspect element
+        // Contoh: "entry.1234567890"
+        const ENTRY_IDS = [
+            "entry.1000000001", // Ter Favorit
+            "entry.1000000002", // Ter Cantik
+            "entry.1000000003", // Ter Ganteng
+            "entry.1000000004", // Ter Kreatif
+            "entry.1000000005", // Ter Sibuk
+            "entry.1000000006", // Ter Ngaret
+            "entry.1000000007", // Ter Aktif
+            "entry.1000000008", // Ter Jahil
+            "entry.1000000009", // Ter Ekstrovert
+            "entry.1000000010", // Ter Introvert
+            "entry.1000000011", // Ter Lucu
+            "entry.1000000012", // Ter Imut
+            "entry.1000000013", // Ter Famous
+            "entry.1000000014", // Ter Multitalent
+            "entry.1000000015", // Ter Santuy
+            "entry.1000000016", // Ter Sabar
+            "entry.1000000017", // Ter Manis
+            "entry.1000000018", // Ter Bucin
+            "entry.1000000019", // Ter Panikan
+            "entry.1000000020", // Ter Berisik
+            "entry.1000000021", // Ter On Time
+            "entry.1000000022", // Ter Cengeng
+            "entry.1000000023", // Ter Keren
+            "entry.1000000024", // Ter Ngantukan
+            "entry.1000000025", // Ter Produktif
+            "entry.1000000026", // Ter Ceroboh
+            "entry.1000000027", // Ter Lebay
+            "entry.1000000028", // Ter Asik
+            "entry.1000000029", // Ter Sensi
+            "entry.1000000030", // Ter Mageran
+            "entry.1000000031", // Ter Berbakat
+            "entry.1000000032", // Ter Positive Vibes
+            "entry.1000000033", // Ter Rajin
+            "entry.1000000034", // Ter Wibu
+            "entry.1000000035", // Ter Ramah
+            "entry.1000000036", // Ter Riweuh
+            "entry.1000000037", // Ter Cerewet
+            "entry.1000000038", // Ter Energik
+            "entry.1000000039", // Ter Kalem
+            "entry.1000000040", // Ter Royal
+            "entry.1000000041", // Ter Fashionable
+            "entry.1000000042", // Ter Wibawa
+            "entry.1000000043", // Ter Sinis
+            "entry.1000000044", // Ter Sadis
+            "entry.1000000045", // Ter Julid
+            "entry.1000000046", // Ter Jutek
+            "entry.1000000047", // Ter Jahat
+            "entry.1000000048", // Ter Sombong
+            "entry.1000000049", // Ter Flat
+            "entry.1000000050" // Ter Cuek
+        ];
+
+        // ============================================================
+        //  3. RENDER FORM
+        // ============================================================
+
+        const grid = document.getElementById('voteGrid');
+
+        KATEGORI.forEach((kat, idx) => {
+            const div = document.createElement('div');
+            div.className = 'vote-item';
+
+            const label = document.createElement('span');
+            label.className = 'label';
+            label.innerHTML = `<span class="num">${String(idx + 1).padStart(2, '0')}.</span> ${kat}`;
+
+            const select = document.createElement('select');
+            select.id = `vote_${idx}`;
+            select.name = ENTRY_IDS[idx] || `entry_${idx}`;
+            select.required = true;
+
+            // Opsi default
+            const defOpt = document.createElement('option');
+            defOpt.value = '';
+            defOpt.textContent = '— pilih kakak —';
+            defOpt.disabled = true;
+            defOpt.selected = true;
+            select.appendChild(defOpt);
+
+            // Opsi kakak
+            KAKAK.forEach(nama => {
+                const opt = document.createElement('option');
+                opt.value = nama;
+                opt.textContent = nama;
+                select.appendChild(opt);
+            });
+
+            div.appendChild(label);
+            div.appendChild(select);
+            grid.appendChild(div);
+        });
+
+        // ============================================================
+        //  4. SUBMIT KE GOOGLE FORM
+        // ============================================================
+
+        const formEl = document.getElementById('voteForm');
+        const statusMsg = document.getElementById('statusMsg');
+        const submitBtn = document.getElementById('submitBtn');
+
+        formEl.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            // Kumpulkan data
+            const selects = formEl.querySelectorAll('select');
+            const data = {};
+            let allFilled = true;
+
+            selects.forEach(sel => {
+                const name = sel.name;
+                const val = sel.value.trim();
+                data[name] = val;
+                if (!val) allFilled = false;
+            });
+
+            if (!allFilled) {
+                statusMsg.className = 'status-msg error';
+                statusMsg.textContent = '❌ Masih ada kategori yang belum dipilih. Lengkapi semua ya!';
+                return;
+            }
+
+            // Siapkan payload untuk Google Form
+            const formData = new FormData();
+            for (const [key, value] of Object.entries(data)) {
+                formData.append(key, value);
+            }
+
+            // URL submit Google Form
+            const submitUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+
+            statusMsg.className = 'status-msg';
+            statusMsg.textContent = '⏳ Mengirim suara...';
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = '0.7';
+
+            try {
+                // Kirim dengan fetch (mode no-cors agar tidak blokir CORS)
+                const response = await fetch(submitUrl, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: formData
+                });
+
+                // Karena mode no-cors, response tidak bisa dibaca,
+                // tapi kita anggap sukses jika tidak error.
+                statusMsg.className = 'status-msg success';
+                statusMsg.textContent = '✅ Suara berhasil dikirim! Terima kasih sudah memilih. 🙌';
+
+                // Reset form setelah sukses (opsional)
+                // formEl.reset();
+
+                // Tampilkan pesan sukses di tombol
+                submitBtn.textContent = '✓ Terkirim!';
+                submitBtn.style.background = '#1e7e34';
+
+            } catch (err) {
+                statusMsg.className = 'status-msg error';
+                statusMsg.textContent = '⚠️ Gagal mengirim. Coba lagi atau hubungi panitia.';
+                console.warn('Submit error:', err);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
+        });
+
+        // ============================================================
+        //  5. TAMBAHAN: human touch - reset status jika user mengubah
+        // ============================================================
+
+        document.querySelectorAll('select').forEach(sel => {
+            sel.addEventListener('change', function() {
+                const msg = document.getElementById('statusMsg');
+                if (msg.textContent.includes('terkirim') || msg.textContent.includes('Berhasil')) {
+                    msg.textContent = '';
+                    msg.className = 'status-msg';
+                    const btn = document.getElementById('submitBtn');
+                    btn.textContent = 'Kirim Suara';
+                    btn.style.background = '#1a1a1a';
+                }
+            });
+        });
+
+        // ============================================================
+        //  6. INFO DI KONSOLE (membantu setup)
+        // ============================================================
+
+        console.log('📋 Pemilihan Kakak Ter — OSIS SMA Negeri 1 Rogojampi');
+        console.log(`👥 ${KAKAK.length} kakak, ${KATEGORI.length} kategori`);
+        console.log('🔗 Pastikan ENTRY_IDS dan FORM_ID sudah benar di script.');
+        console.log('📝 Entry IDs harus sesuai dengan urutan kategori di Google Form.');
+        console.log('ℹ️  Cara dapat entry ID: inspect element di Google Form, cari name="entry.xxxxxx"');
+    </script>
+
+</body>
+</html>
