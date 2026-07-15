@@ -283,7 +283,7 @@
             }
         }
 
-        /* ---------- LOADING / STATUS ---------- */
+        /* ---------- STATUS ---------- */
         .status-msg {
             margin-top: 1.2rem;
             font-size: 0.9rem;
@@ -297,7 +297,6 @@
             color: #b33;
         }
 
-        /* ---------- HUMAN TOUCH ---------- */
         .signature {
             font-family: "Georgia", serif;
             font-style: italic;
@@ -330,7 +329,7 @@
                 Suaramu menentukan siapa yang layak menyandang gelar <em>“Ter”</em> di angkatan ini!
             </p>
             <p class="small">
-                ⚡ Isi semua kategori sebelum mengirim. Data akan dikirim ke Google Form secara otomatis.
+                ⚡ Isi semua kategori sebelum mengirim. Data akan langsung tersimpan di Google Sheets.
             </p>
         </div>
 
@@ -367,7 +366,6 @@
         //  1. DATA
         // ============================================================
 
-        // Daftar 50 kakak OSIS (dari file DISPEN)
         const KAKAK = [
             "Nadin Izzah Millati Putri",
             "Rezhta Andriagsa",
@@ -421,7 +419,6 @@
             "Marvin Khadafi"
         ];
 
-        // 50 kategori (urutan sesuai permintaan)
         const KATEGORI = [
             "Ter Favorit",
             "Ter Cantik",
@@ -476,76 +473,12 @@
         ];
 
         // ============================================================
-        //  2. KONFIGURASI GOOGLE FORM
+        //  2. KONFIGURASI GOOGLE SHEETS (via Apps Script)
         // ============================================================
 
-        // ====== SESUAIKAN DENGAN FORM YANG KAMU BUAT ======
-        // 1. Buat Google Form dengan 50 pertanyaan (dropdown).
-        // 2. Setiap pertanyaan = satu kategori (nama kategori sebagai judul).
-        // 3. Pilihan jawaban = daftar KAKAK (copy dari atas).
-        // 4. Ganti FORM_ID di bawah dengan ID form-mu.
-        // 5. Ganti entry ID di bawah dengan ID masing-masing pertanyaan.
-        //    Cara dapat entry ID: buka form di browser, inspect element,
-        //    cari input dengan name="entry.xxxxxx", salin angkanya.
-        // ===================================================
-
-        const FORM_ID = "1FAIpQLSdUaMhWgHIS2FlsVfZ8kFZ8UxN1FvJkLQ3mR6oP4nB7cD9eF0gH1iJ2kL3mN4oP5qR6sT7uV8wX9yZ0"; // ganti dengan ID form-mu
-
-        // Entry ID untuk setiap kategori (urut sesuai KATEGORI)
-        // Isi dengan ID yang kamu dapat dari inspect element
-        // Contoh: "entry.1234567890"
-        const ENTRY_IDS = [
-            "entry.1000000001", // Ter Favorit
-            "entry.1000000002", // Ter Cantik
-            "entry.1000000003", // Ter Ganteng
-            "entry.1000000004", // Ter Kreatif
-            "entry.1000000005", // Ter Sibuk
-            "entry.1000000006", // Ter Ngaret
-            "entry.1000000007", // Ter Aktif
-            "entry.1000000008", // Ter Jahil
-            "entry.1000000009", // Ter Ekstrovert
-            "entry.1000000010", // Ter Introvert
-            "entry.1000000011", // Ter Lucu
-            "entry.1000000012", // Ter Imut
-            "entry.1000000013", // Ter Famous
-            "entry.1000000014", // Ter Multitalent
-            "entry.1000000015", // Ter Santuy
-            "entry.1000000016", // Ter Sabar
-            "entry.1000000017", // Ter Manis
-            "entry.1000000018", // Ter Bucin
-            "entry.1000000019", // Ter Panikan
-            "entry.1000000020", // Ter Berisik
-            "entry.1000000021", // Ter On Time
-            "entry.1000000022", // Ter Cengeng
-            "entry.1000000023", // Ter Keren
-            "entry.1000000024", // Ter Ngantukan
-            "entry.1000000025", // Ter Produktif
-            "entry.1000000026", // Ter Ceroboh
-            "entry.1000000027", // Ter Lebay
-            "entry.1000000028", // Ter Asik
-            "entry.1000000029", // Ter Sensi
-            "entry.1000000030", // Ter Mageran
-            "entry.1000000031", // Ter Berbakat
-            "entry.1000000032", // Ter Positive Vibes
-            "entry.1000000033", // Ter Rajin
-            "entry.1000000034", // Ter Wibu
-            "entry.1000000035", // Ter Ramah
-            "entry.1000000036", // Ter Riweuh
-            "entry.1000000037", // Ter Cerewet
-            "entry.1000000038", // Ter Energik
-            "entry.1000000039", // Ter Kalem
-            "entry.1000000040", // Ter Royal
-            "entry.1000000041", // Ter Fashionable
-            "entry.1000000042", // Ter Wibawa
-            "entry.1000000043", // Ter Sinis
-            "entry.1000000044", // Ter Sadis
-            "entry.1000000045", // Ter Julid
-            "entry.1000000046", // Ter Jutek
-            "entry.1000000047", // Ter Jahat
-            "entry.1000000048", // Ter Sombong
-            "entry.1000000049", // Ter Flat
-            "entry.1000000050" // Ter Cuek
-        ];
+        // ====== GANTI DENGAN URL WEB APP ANDA ======
+        // Cara dapatkan: buat script, deploy sebagai web app, ambil URL
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz13ihoY5fTGG1BcX8lM0WJF2aUW7iWSOKfdXCCUPZpNXrwT4CORDurACM0wI-InsJ_bA/exec"; // <-- GANTI
 
         // ============================================================
         //  3. RENDER FORM
@@ -563,10 +496,9 @@
 
             const select = document.createElement('select');
             select.id = `vote_${idx}`;
-            select.name = ENTRY_IDS[idx] || `entry_${idx}`;
+            select.name = `kategori_${idx}`; // nama unik
             select.required = true;
 
-            // Opsi default
             const defOpt = document.createElement('option');
             defOpt.value = '';
             defOpt.textContent = '— pilih kakak —';
@@ -574,7 +506,6 @@
             defOpt.selected = true;
             select.appendChild(defOpt);
 
-            // Opsi kakak
             KAKAK.forEach(nama => {
                 const opt = document.createElement('option');
                 opt.value = nama;
@@ -588,7 +519,7 @@
         });
 
         // ============================================================
-        //  4. SUBMIT KE GOOGLE FORM
+        //  4. SUBMIT KE GOOGLE SHEETS (via Apps Script)
         // ============================================================
 
         const formEl = document.getElementById('voteForm');
@@ -603,10 +534,9 @@
             const data = {};
             let allFilled = true;
 
-            selects.forEach(sel => {
-                const name = sel.name;
+            selects.forEach((sel, index) => {
                 const val = sel.value.trim();
-                data[name] = val;
+                data[KATEGORI[index]] = val;
                 if (!val) allFilled = false;
             });
 
@@ -616,43 +546,40 @@
                 return;
             }
 
-            // Siapkan payload untuk Google Form
-            const formData = new FormData();
-            for (const [key, value] of Object.entries(data)) {
-                formData.append(key, value);
-            }
-
-            // URL submit Google Form
-            const submitUrl = `https://docs.google.com/forms/d/e/${FORM_ID}/formResponse`;
+            // Tambahkan timestamp
+            data['timestamp'] = new Date().toLocaleString('id-ID', { timeZone: 'Asia/Jakarta' });
 
             statusMsg.className = 'status-msg';
-            statusMsg.textContent = '⏳ Mengirim suara...';
+            statusMsg.textContent = '⏳ Menyimpan suara ke Google Sheets...';
             submitBtn.disabled = true;
             submitBtn.style.opacity = '0.7';
 
             try {
-                // Kirim dengan fetch (mode no-cors agar tidak blokir CORS)
-                const response = await fetch(submitUrl, {
+                const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    body: formData
+                    mode: 'cors',          // bisa pakai cors karena Apps Script mendukung
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
                 });
 
-                // Karena mode no-cors, response tidak bisa dibaca,
-                // tapi kita anggap sukses jika tidak error.
-                statusMsg.className = 'status-msg success';
-                statusMsg.textContent = '✅ Suara berhasil dikirim! Terima kasih sudah memilih. 🙌';
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
-                // Reset form setelah sukses (opsional)
-                // formEl.reset();
-
-                // Tampilkan pesan sukses di tombol
-                submitBtn.textContent = '✓ Terkirim!';
-                submitBtn.style.background = '#1e7e34';
-
+                const result = await response.json();
+                if (result.status === 'success') {
+                    statusMsg.className = 'status-msg success';
+                    statusMsg.textContent = '✅ Suara berhasil disimpan! Terima kasih sudah memilih. 🙌';
+                    submitBtn.textContent = '✓ Tersimpan!';
+                    submitBtn.style.background = '#1e7e34';
+                } else {
+                    throw new Error(result.message || 'Gagal menyimpan');
+                }
             } catch (err) {
                 statusMsg.className = 'status-msg error';
-                statusMsg.textContent = '⚠️ Gagal mengirim. Coba lagi atau hubungi panitia.';
+                statusMsg.textContent = '⚠️ Gagal menyimpan. Coba lagi atau hubungi panitia.';
                 console.warn('Submit error:', err);
             } finally {
                 submitBtn.disabled = false;
@@ -660,14 +587,11 @@
             }
         });
 
-        // ============================================================
-        //  5. TAMBAHAN: human touch - reset status jika user mengubah
-        // ============================================================
-
+        // Reset status jika ada perubahan
         document.querySelectorAll('select').forEach(sel => {
             sel.addEventListener('change', function() {
                 const msg = document.getElementById('statusMsg');
-                if (msg.textContent.includes('terkirim') || msg.textContent.includes('Berhasil')) {
+                if (msg.textContent.includes('tersimpan') || msg.textContent.includes('Berhasil')) {
                     msg.textContent = '';
                     msg.className = 'status-msg';
                     const btn = document.getElementById('submitBtn');
@@ -677,15 +601,9 @@
             });
         });
 
-        // ============================================================
-        //  6. INFO DI KONSOLE (membantu setup)
-        // ============================================================
-
         console.log('📋 Pemilihan Kakak Ter — OSIS SMA Negeri 1 Rogojampi');
-        console.log(`👥 ${KAKAK.length} kakak, ${KATEGORI.length} kategori`);
-        console.log('🔗 Pastikan ENTRY_IDS dan FORM_ID sudah benar di script.');
-        console.log('📝 Entry IDs harus sesuai dengan urutan kategori di Google Form.');
-        console.log('ℹ️  Cara dapat entry ID: inspect element di Google Form, cari name="entry.xxxxxx"');
+        console.log('👥 ' + KAKAK.length + ' kakak, ' + KATEGORI.length + ' kategori');
+        console.log('📊 Data akan disimpan ke Google Sheets via Apps Script.');
     </script>
 
 </body>
