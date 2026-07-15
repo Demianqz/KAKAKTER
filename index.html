@@ -326,7 +326,7 @@
         <div class="intro">
             <p>
                 Pilih <strong>satu</strong> kakak OSIS untuk setiap kategori di bawah ini.
-                Suaramu menentukan siapa yang layak menyandang gelar <em>“Ter”</em> di angkatan ini!
+                Suaramu menentukan siapa yang layak menyandang gelar <em>"Ter"</em> di angkatan ini!
             </p>
             <p class="small">
                 ⚡ Isi semua kategori sebelum mengirim. Data akan langsung tersimpan di Google Sheets.
@@ -476,9 +476,8 @@
         //  2. KONFIGURASI GOOGLE SHEETS (via Apps Script)
         // ============================================================
 
-        // ====== GANTI DENGAN URL WEB APP ANDA ======
-        // Cara dapatkan: buat script, deploy sebagai web app, ambil URL
-        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz13ihoY5fTGG1BcX8lM0WJF2aUW7iWSOKfdXCCUPZpNXrwT4CORDurACM0wI-InsJ_bA/exec"; // <-- GANTI
+        // ====== URL APPS SCRIPT ANDA ======
+        const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyBUnJEmk66M_09KBDE3geJbJX_E5yOr9Font8jc-qjGmC5tE-BEKn7i5eXA84AeK0Maw/exec";
 
         // ============================================================
         //  3. RENDER FORM
@@ -496,7 +495,7 @@
 
             const select = document.createElement('select');
             select.id = `vote_${idx}`;
-            select.name = `kategori_${idx}`; // nama unik
+            select.name = `kategori_${idx}`;
             select.required = true;
 
             const defOpt = document.createElement('option');
@@ -557,15 +556,14 @@
             try {
                 const response = await fetch(APPS_SCRIPT_URL, {
                     method: 'POST',
-                    mode: 'cors',          // bisa pakai cors karena Apps Script mendukung
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data),
                 });
 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText}`);
                 }
 
                 const result = await response.json();
@@ -579,8 +577,8 @@
                 }
             } catch (err) {
                 statusMsg.className = 'status-msg error';
-                statusMsg.textContent = '⚠️ Gagal menyimpan. Coba lagi atau hubungi panitia.';
-                console.warn('Submit error:', err);
+                statusMsg.textContent = `❌ Gagal: ${err.message || 'Coba lagi atau hubungi panitia.'}`;
+                console.error('Detail error:', err);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
@@ -604,6 +602,7 @@
         console.log('📋 Pemilihan Kakak Ter — OSIS SMA Negeri 1 Rogojampi');
         console.log('👥 ' + KAKAK.length + ' kakak, ' + KATEGORI.length + ' kategori');
         console.log('📊 Data akan disimpan ke Google Sheets via Apps Script.');
+        console.log('🔗 URL Apps Script: ' + APPS_SCRIPT_URL);
     </script>
 
 </body>
